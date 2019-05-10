@@ -6,47 +6,53 @@ from enum import Enum
 
 pyautogui.FAILSAFE = True
 
+
 class GameState(Enum):
     Other = 'other'
     HMS = 'hms'
     InCombat = 'incombat'
 
-def localeImage(image, confidence = 0.7):
-    return pyautogui.locateOnScreen(image + '.png', confidence = confidence, grayscale = True)
 
-def clickImage(targetImage, confidence = 0.7):
-    location = localeImage(targetImage, confidence = confidence)
+def localeImage(image, confidence=0.7):
+    return pyautogui.locateOnScreen(image + '.png', confidence=confidence, grayscale=True)
+
+
+def clickImage(targetImage, confidence=0.7):
+    location = localeImage(targetImage, confidence=confidence)
     if location is not None:
         x, y = pyautogui.center(location)
         pyautogui.click(x, y)
         pyautogui.PAUSE = 1.0
-    return 
+    return
 
-def clickImageUntilSuccess(targetImage, confidence = 0.7):
+
+def clickImageUntilSuccess(targetImage, confidence=0.7):
     location = None
     while location is None:
         print('...')
-        location = localeImage(targetImage, confidence = confidence)
+        location = localeImage(targetImage, confidence=confidence)
     x, y = pyautogui.center(location)
     pyautogui.click(x, y)
     pyautogui.PAUSE = 1.0
-    return 
+    return
 
 
 def checkGameState():
-    location = localeImage('.\\images\\hms\\exercise_reward', confidence = 0.9)
+    location = localeImage('.\\images\\hms\\exercise_reward', confidence=0.9)
     if location is not None:
         return GameState.HMS
 
-    location = localeImage('.\\images\\incombat\\button_pause', confidence = 0.7)
+    location = localeImage('.\\images\\incombat\\button_pause', confidence=0.7)
     if location is not None:
         return GameState.InCombat
 
     return GameState.Other
 
+
 def handleOtherState():
     pressSkip()
     return
+
 
 def pressSkip():
     print('press C to skip...')
@@ -55,14 +61,16 @@ def pressSkip():
     pyautogui.PAUSE = 1.0
     return
 
+
 def handleStrikeState():
     print('click hms belfast...')
     clickImageUntilSuccess('.\\images\\hms\\belfast')
     return
 
+
 def handleInCombatState():
     print('click auto off if exists...')
-    location = localeImage('.\\images\\incombat\\auto_off', confidence = 0.9)
+    location = localeImage('.\\images\\incombat\\auto_off', confidence=0.9)
     if location is not None:
         clickImageUntilSuccess('.\\images\\incombat\\auto_off')
 
@@ -74,11 +82,12 @@ def handleInCombatState():
     pressSkip()
     return
 
+
 def main():
     scriptName = sys.argv[0]
     print('Start runnng: ' + scriptName)
     print('Press Ctrl-C to quit.')
-    
+
     while True:
         print('...')
         currentGameState = checkGameState()
@@ -100,15 +109,15 @@ def main():
         # location = localeImage('.\\images\\subchapter\\ship_carrier_4')
         # if location is not None:
         #     x, y = pyautogui.center(location)
-        #     print(location) 
+        #     print(location)
 
         # location = pyautogui.locateOnScreen('.\\images\\ship_normal_destroyer', grayscale = True)
         # if location is not None:
         #     x, y = pyautogui.center(location)
-        #     pyautogui.click(x, y) 
+        #     pyautogui.click(x, y)
         # ==================================================================
     return
 
+
 if __name__ == '__main__':
     main()
-
