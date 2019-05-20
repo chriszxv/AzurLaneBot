@@ -11,7 +11,7 @@ class GameState(Enum):
     Other = 'other'
     PreCombat = 'precombat'
     SubChapter = 'subchapter'
-    InCombat = 'incombat'
+    Combat = 'combat'
 
 
 def localeImage(image, confidence=0.7):
@@ -49,9 +49,9 @@ def checkGameState():
     if location is not None:
         return GameState.SubChapter
 
-    location = localeImage('.\\images\\incombat\\button_pause', confidence=0.7)
+    location = localeImage('.\\images\\combat\\button_pause', confidence=0.7)
     if location is not None:
-        return GameState.InCombat
+        return GameState.Combat
 
     return GameState.Other
 
@@ -76,19 +76,22 @@ def handlePreCombatState():
 
 
 def handleSubChapter():
-    print('click sp 3...')
+    print('click sp 4...')
     clickImage('.\\images\\virtual_connection_synchronicity\\sp_4',
-               confidence=1.0)
+               confidence=0.9)
 
     print('click strike button 1...')
-    clickImage('.\\images\\precombat\\strike_big', confidence=0.7)
+    clickImage('.\\images\\precombat\\strike', confidence=0.7)
 
     print('click strike button 2...')
-    clickImage('.\\images\\precombat\\strike_normal', confidence=0.7)
+    clickImage('.\\images\\precombat\\strike', confidence=0.7)
     return
 
 
 def handleSubChapterState():
+
+    findShipBoss()
+    findShipGirl()
 
     findShipBoss()
     findShipBattleship()
@@ -99,43 +102,18 @@ def handleSubChapterState():
     findShipBoss()
     findShipCarrier()
 
-    findShipBoss()
-    findShipGirl()
-
     return
 
 
 def findShipBoss():
-    print('find ship boss...')
+    print('click ship boss...')
     clickImage(
         '.\\images\\virtual_connection_synchronicity\\ship_boss_2', confidence=0.7)
     return
 
 
-def findShipBattleship():
-    print('find ship battleship...')
-    clickImage(
-        '.\\images\\virtual_connection_synchronicity\\ship_battleship_3', confidence=0.7)
-    clickImage(
-        '.\\images\\virtual_connection_synchronicity\\ship_battleship_4', confidence=0.7)
-    clickImage(
-        '.\\images\\virtual_connection_synchronicity\\ship_battleship_5', confidence=0.7)
-    return
-
-
-def findShipDestroyer():
-    print('find ship destroyer...')
-    clickImage(
-        '.\\images\\virtual_connection_synchronicity\\ship_destroyer_5', confidence=0.7)
-    clickImage(
-        '.\\images\\virtual_connection_synchronicity\\ship_destroyer_6', confidence=0.7)
-    clickImage(
-        '.\\images\\virtual_connection_synchronicity\\ship_destroyer_7', confidence=0.7)
-    return
-
-
 def findShipGirl():
-    print('find ship carrier...')
+    print('click ship girl...')
     clickImage(
         '.\\images\\virtual_connection_synchronicity\\ship_fortune_1', confidence=0.7)
     clickImage(
@@ -151,8 +129,30 @@ def findShipGirl():
     return
 
 
+def findShipBattleship():
+    print('click ship battleship...')
+    clickImage(
+        '.\\images\\virtual_connection_synchronicity\\ship_battleship_3', confidence=0.7)
+    clickImage(
+        '.\\images\\virtual_connection_synchronicity\\ship_battleship_4', confidence=0.7)
+    clickImage(
+        '.\\images\\virtual_connection_synchronicity\\ship_battleship_5', confidence=0.7)
+    return
+
+
+def findShipDestroyer():
+    print('click ship destroyer...')
+    clickImage(
+        '.\\images\\virtual_connection_synchronicity\\ship_destroyer_5', confidence=0.7)
+    clickImage(
+        '.\\images\\virtual_connection_synchronicity\\ship_destroyer_6', confidence=0.7)
+    clickImage(
+        '.\\images\\virtual_connection_synchronicity\\ship_destroyer_7', confidence=0.7)
+    return
+
+
 def findShipCarrier():
-    print('find ship carrier...')
+    print('click ship carrier...')
     clickImage(
         '.\\images\\virtual_connection_synchronicity\\ship_carrier_4', confidence=0.7)
     clickImage(
@@ -162,11 +162,11 @@ def findShipCarrier():
     return
 
 
-def handleInCombatState():
+def handleCombatState():
     print('click auto off if exists...')
-    location = localeImage('.\\images\\incombat\\auto_off', confidence=0.9)
+    location = localeImage('.\\images\\combat\\auto_off', confidence=0.9)
     if location is not None:
-        clickImageUntilSuccess('.\\images\\incombat\\auto_off')
+        clickImageUntilSuccess('.\\images\\combat\\auto_off')
 
     print('press M to call submarine...')
     pyautogui.keyDown('M')
@@ -185,7 +185,7 @@ def main():
     while True:
         print('...')
         currentGameState = checkGameState()
-        print('======================================')
+        print('============================================================================')
         print('Current Game State: ' + currentGameState.name)
 
         if currentGameState == GameState.Other:
@@ -197,8 +197,8 @@ def main():
         elif currentGameState == GameState.SubChapter:
             handleSubChapterState()
 
-        elif currentGameState == GameState.InCombat:
-            handleInCombatState()
+        elif currentGameState == GameState.Combat:
+            handleCombatState()
     return
 
 
