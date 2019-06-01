@@ -7,6 +7,8 @@ from enum import Enum
 
 pyautogui.FAILSAFE = True
 
+ammo_used = 0
+
 
 class GameState(Enum):
     Other = 'other'
@@ -52,11 +54,7 @@ def pressKey(key, count=1):
 
 def checkGameState():
     location = localeImage(
-        '.\\images\\precombat\\rescue_signal_1', confidence=0.7)
-    if location is not None:
-        return GameState.PreCombat
-    location = localeImage(
-        '.\\images\\precombat\\rescue_signal_2', confidence=0.7)
+        '.\\images\\precombat\\normal_mode', confidence=0.7)
     if location is not None:
         return GameState.PreCombat
 
@@ -86,27 +84,15 @@ def handleOtherState():
 
 
 def handlePreCombatState():
-    print('handle rescue chapter:')
-    handleRescueChapter()
-
     print('handle sub chapter:')
     handleSubChapter()
     return
 
 
-def handleRescueChapter():
-    print('click rescue signal...')
-    clickImage('.\\images\\precombat\\rescue_signal_1')
-    clickImage('.\\images\\precombat\\rescue_signal_2')
-
-    print('click rescue...')
-    clickImageUntilSuccess('.\\images\\precombat\\rescue')
-    return
-
-
 def handleSubChapter():
     print('click sub chapter...')
-    clickImage('.\\images\\precombat\\sub_chapter_X_5', confidence=0.7)
+    clickImage(
+        '.\\images\\scherzo_of_iron_and_blood\\d_3', confidence=0.7)
 
     print('click strike button 1...')
     clickImage('.\\images\\precombat\\strike', confidence=0.7)
@@ -114,11 +100,9 @@ def handleSubChapter():
     print('click strike button 2...')
     clickImage('.\\images\\precombat\\strike', confidence=0.7)
 
-    print('wait animation...')
-    time.sleep(4.0)
-    print('reset panel postion...')
-    pressKey('D', 4)
-    pressKey('W', 1)
+    print('ammo reset...')
+    global ammo_used
+    ammo_used = 0
 
     return
 
@@ -126,6 +110,20 @@ def handleSubChapter():
 def handleSubChapterState():
     print('wait animation...')
     time.sleep(3.0)
+
+    switchFleetIfNeeded()
+
+    findShipBoss()
+    findSirenBattleship()
+
+    findShipBoss()
+    findSirenHeavyCruiser()
+
+    findShipBoss()
+    findSirenLightCruiser()
+
+    findShipBoss()
+    findSirenCarrier()
 
     findShipBoss()
     findShipBattleship()
@@ -138,6 +136,23 @@ def handleSubChapterState():
     return
 
 
+def switchFleetIfNeeded():
+    global ammo_used
+    if ammo_used >= 4:
+        print('switch fleet...')
+        clickImage('.\\images\\subchapter\\switchover', confidence=0.7)
+
+        print('wait animation...')
+        time.sleep(1.0)
+
+        print('reset panel postion...')
+        pressKey('D', 2)
+
+        print('ammo reset...')
+        ammo_used = 0
+    return
+
+
 def findShipBoss():
     print('click ship boss...')
     clickImage('.\\images\\subchapter\\ship_boss_1', confidence=0.7)
@@ -147,6 +162,54 @@ def findShipBoss():
     # clickImage('.\\images\\subchapter\\ship_boss_5', confidence = 0.7)
     # clickImage('.\\images\\subchapter\\ship_boss_6', confidence = 0.7)
     clickImage('.\\images\\subchapter\\ship_boss_7', confidence=0.7)
+    return
+
+
+def findSirenBattleship():
+    print('click siren battleship...')
+    # clickImage('.\\images\\subchapter\\siren_battleship_1', confidence=0.7)
+    clickImage('.\\images\\subchapter\\siren_battleship_2', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_battleship_3', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_battleship_4', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_battleship_5', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_battleship_6', confidence=0.7)
+    clickImage('.\\images\\subchapter\\siren_battleship_7', confidence=0.7)
+    return
+
+
+def findSirenHeavyCruiser():
+    print('click siren heavy cruiser...')
+    clickImage('.\\images\\subchapter\\siren_heavy_cruiser_1', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_heavy_cruiser_2', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_heavy_cruiser_3', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_heavy_cruiser_4', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_heavy_cruiser_5', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_heavy_cruiser_6', confidence=0.7)
+    clickImage('.\\images\\subchapter\\siren_heavy_cruiser_7', confidence=0.7)
+    return
+
+
+def findSirenLightCruiser():
+    print('click siren light cruiser...')
+    clickImage('.\\images\\subchapter\\siren_light_cruiser_1', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_light_cruiser_2', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_light_cruiser_3', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_light_cruiser_4', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_light_cruiser_5', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_light_cruiser_6', confidence=0.7)
+    clickImage('.\\images\\subchapter\\siren_light_cruiser_7', confidence=0.7)
+    return
+
+
+def findSirenCarrier():
+    print('click siren carrier...')
+    clickImage('.\\images\\subchapter\\siren_carrier_1', confidence=0.7)
+    clickImage('.\\images\\subchapter\\siren_carrier_2', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_carrier_3', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_carrier_4', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_carrier_5', confidence=0.7)
+    # clickImage('.\\images\\subchapter\\siren_carrier_6', confidence=0.7)
+    clickImage('.\\images\\subchapter\\siren_carrier_7', confidence=0.7)
     return
 
 
@@ -210,6 +273,10 @@ def handleFormationState():
 
 def handleInCompleteState():
     clickImage('.\\images\\complete\\confirm', confidence=0.7)
+
+    global ammo_used
+    ammo_used = ammo_used + 1
+    print('ammo used:' + str(ammo_used))
     return
 
 
