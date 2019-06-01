@@ -11,7 +11,7 @@ class GameState(Enum):
     Other = 'other'
     PreCombat = 'precombat'
     SubChapter = 'subchapter'
-    InCombat = 'incombat'
+    Combat = 'combat'
 
 
 def localeImage(image, confidence=0.7):
@@ -47,9 +47,9 @@ def checkGameState():
     if location is not None:
         return GameState.SubChapter
 
-    location = localeImage('.\\images\\incombat\\button_pause', confidence=0.7)
+    location = localeImage('.\\images\\combat\\button_pause', confidence=0.7)
     if location is not None:
-        return GameState.InCombat
+        return GameState.Combat
 
     return GameState.Other
 
@@ -78,10 +78,10 @@ def handleSubChapter():
     clickImage('.\\images\\ryujo\\sp_3', confidence=0.9)
 
     print('click strike button 1...')
-    clickImage('.\\images\\precombat\\strike_big', confidence=0.7)
+    clickImage('.\\images\\precombat\\strike', confidence=0.7)
 
     print('click strike button 2...')
-    clickImage('.\\images\\precombat\\strike_normal', confidence=0.7)
+    clickImage('.\\images\\precombat\\strike', confidence=0.7)
     return
 
 
@@ -142,7 +142,7 @@ def findShips():
 
 
 def findShipBoss():
-    print('find ship boss...')
+    print('click ship boss...')
     clickImage('.\\images\\subchapter\\ship_boss_1', confidence=0.7)
     # clickImage('.\\images\\subchapter\\ship_boss_2', confidence = 0.7)
     # clickImage('.\\images\\subchapter\\ship_boss_3', confidence = 0.7)
@@ -154,7 +154,7 @@ def findShipBoss():
 
 
 def findShipBattleship():
-    print('find ship battleship...')
+    print('click ship battleship...')
     clickImage('.\\images\\subchapter\\ship_battleship_1', confidence=0.7)
     clickImage('.\\images\\subchapter\\ship_battleship_2', confidence=0.7)
     clickImage('.\\images\\subchapter\\ship_battleship_3', confidence=0.7)
@@ -166,7 +166,7 @@ def findShipBattleship():
 
 
 def findShipDestroyer():
-    print('find ship destroyer...')
+    print('click ship destroyer...')
     clickImage('.\\images\\subchapter\\ship_destroyer_1', confidence=0.7)
     clickImage('.\\images\\subchapter\\ship_destroyer_2', confidence=0.7)
     clickImage('.\\images\\subchapter\\ship_destroyer_3', confidence=0.7)
@@ -178,7 +178,7 @@ def findShipDestroyer():
 
 
 def findShipCarrier():
-    print('find ship carrier...')
+    print('click ship carrier...')
     clickImage('.\\images\\subchapter\\ship_carrier_1', confidence=0.7)
     clickImage('.\\images\\subchapter\\ship_carrier_2', confidence=0.7)
     clickImage('.\\images\\subchapter\\ship_carrier_3', confidence=0.7)
@@ -190,7 +190,7 @@ def findShipCarrier():
 
 
 def findShipTreasure():
-    print('find ship treasure...')
+    print('click ship treasure...')
     clickImage('.\\images\\subchapter\\ship_treasure_1', confidence=0.9)
     # clickImage('.\\images\\subchapter\\ship_treasure_2', confidence = 0.7)
     clickImage('.\\images\\subchapter\\ship_treasure_3', confidence=0.9)
@@ -213,11 +213,11 @@ def findBox():
     return
 
 
-def handleInCombatState():
+def handleCombatState():
     print('click auto off if exists...')
-    location = localeImage('.\\images\\incombat\\auto_off', confidence=0.9)
+    location = localeImage('.\\images\\combat\\auto_off', confidence=0.9)
     if location is not None:
-        clickImageUntilSuccess('.\\images\\incombat\\auto_off')
+        clickImageUntilSuccess('.\\images\\combat\\auto_off')
 
     print('press M to call submarine...')
     pyautogui.keyDown('M')
@@ -236,7 +236,7 @@ def main():
     while True:
         print('...')
         currentGameState = checkGameState()
-        print('======================================')
+        print('============================================================================')
         print('Current Game State: ' + currentGameState.name)
 
         if currentGameState == GameState.Other:
@@ -248,8 +248,8 @@ def main():
         elif currentGameState == GameState.SubChapter:
             handleSubChapterState()
 
-        elif currentGameState == GameState.InCombat:
-            handleInCombatState()
+        elif currentGameState == GameState.Combat:
+            handleCombatState()
     return
 
 

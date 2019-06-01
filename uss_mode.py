@@ -10,7 +10,7 @@ pyautogui.FAILSAFE = True
 class GameState(Enum):
     Other = 'other'
     USS = 'uss'
-    InCombat = 'incombat'
+    Combat = 'combat'
 
 
 def localeImage(image, confidence=0.7):
@@ -42,9 +42,9 @@ def checkGameState():
     if location is not None:
         return GameState.USS
 
-    location = localeImage('.\\images\\incombat\\button_pause', confidence=0.7)
+    location = localeImage('.\\images\\combat\\button_pause', confidence=0.7)
     if location is not None:
-        return GameState.InCombat
+        return GameState.Combat
 
     return GameState.Other
 
@@ -68,11 +68,11 @@ def handleStrikeState():
     return
 
 
-def handleInCombatState():
+def handleCombatState():
     print('click auto off if exists...')
-    location = localeImage('.\\images\\incombat\\auto_off', confidence=0.9)
+    location = localeImage('.\\images\\combat\\auto_off', confidence=0.9)
     if location is not None:
-        clickImageUntilSuccess('.\\images\\incombat\\auto_off')
+        clickImageUntilSuccess('.\\images\\combat\\auto_off')
 
     print('press M to call submarine...')
     pyautogui.keyDown('M')
@@ -91,7 +91,7 @@ def main():
     while True:
         print('...')
         currentGameState = checkGameState()
-        print('======================================')
+        print('============================================================================')
         print('Current Game State: ' + currentGameState.name)
 
         if currentGameState == GameState.Other:
@@ -100,8 +100,8 @@ def main():
         elif currentGameState == GameState.USS:
             handleStrikeState()
 
-        elif currentGameState == GameState.InCombat:
-            handleInCombatState()
+        elif currentGameState == GameState.Combat:
+            handleCombatState()
 
         # ==================================================================
         # DEBUG
