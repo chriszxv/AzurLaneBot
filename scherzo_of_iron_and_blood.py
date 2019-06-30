@@ -170,7 +170,7 @@ def findSirenBattleship():
     # clickImage('.\\images\\subchapter\\siren_battleship_1', confidence=0.7)
     clickImage('.\\images\\subchapter\\siren_battleship_2', confidence=0.7)
     # clickImage('.\\images\\subchapter\\siren_battleship_3', confidence=0.7)
-    # clickImage('.\\images\\subchapter\\siren_battleship_4', confidence=0.7)
+    clickImage('.\\images\\subchapter\\siren_battleship_4', confidence=0.7)
     # clickImage('.\\images\\subchapter\\siren_battleship_5', confidence=0.7)
     # clickImage('.\\images\\subchapter\\siren_battleship_6', confidence=0.7)
     clickImage('.\\images\\subchapter\\siren_battleship_7', confidence=0.7)
