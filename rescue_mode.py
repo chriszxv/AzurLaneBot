@@ -60,7 +60,7 @@ def checkGameState():
     if location is not None:
         return GameState.PreCombat
 
-    location = localeImage('.\\images\\subchapter\\offensive', confidence=0.7)
+    location = localeImage('.\\images\\subchapter\\offensive', confidence=0.9)
     if location is not None:
         return GameState.SubChapter
 
@@ -113,12 +113,6 @@ def handleSubChapter():
 
     print('click strike button 2...')
     clickImage('.\\images\\precombat\\strike', confidence=0.7)
-
-    print('wait animation...')
-    time.sleep(4.0)
-    print('reset panel postion...')
-    pressKey('D', 4)
-    pressKey('W', 1)
 
     return
 
