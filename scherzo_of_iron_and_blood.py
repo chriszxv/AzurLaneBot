@@ -58,7 +58,7 @@ def checkGameState():
     if location is not None:
         return GameState.PreCombat
 
-    location = localeImage('.\\images\\subchapter\\offensive', confidence=0.7)
+    location = localeImage('.\\images\\subchapter\\offensive', confidence=0.9)
     if location is not None:
         return GameState.SubChapter
 
@@ -103,7 +103,6 @@ def handleSubChapter():
     print('ammo reset...')
     global ammo_used
     ammo_used = 0
-
     return
 
 
@@ -126,19 +125,20 @@ def handleSubChapterState():
     findSirenCarrier()
 
     findShipBoss()
+    findShipCarrier()
+
+    findShipBoss()
     findShipBattleship()
 
     findShipBoss()
     findShipDestroyer()
 
-    findShipBoss()
-    findShipCarrier()
     return
 
 
 def switchFleetIfNeeded():
     global ammo_used
-    if ammo_used >= 4:
+    if ammo_used >= 5:
         print('switch fleet...')
         clickImage('.\\images\\subchapter\\switchover', confidence=0.7)
 
