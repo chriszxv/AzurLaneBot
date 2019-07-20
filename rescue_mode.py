@@ -129,6 +129,10 @@ def handleSubChapterState():
 
     findShipBoss()
     findShipCarrier()
+
+    findShipBoss()
+    print('find confirm...')
+    clickImage('.\\images\\subchapter\\confirm', confidence=0.7)
     return
 
 
