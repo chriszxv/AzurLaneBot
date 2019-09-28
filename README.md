@@ -2,14 +2,11 @@
 
 Python bot for lazy people to play [AzurLane](https://azurlane.yo-star.com/)
 
---------------------------------------------------------------------------------
-
 ## Requirement
 
-- Installed Python 3.X.X
-- Installed PyAutoGUI
-
---------------------------------------------------------------------------------
+- Use Windows 10
+- Support Python 3.X.X
+- Support PyAutoGUI
 
 ## Installation
 
@@ -38,14 +35,12 @@ Python bot for lazy people to play [AzurLane](https://azurlane.yo-star.com/)
   - Copy `keyboard_control\com.YoStarJP.AzurLane` to the following folder:
 
     ```
-    `C:\Users\USER_NAME\AppData\Local\Nox\keyboardConfig`
+    C:\Users\USER_NAME\AppData\Local\Nox\keyboardConfig
     ```
 
   - The result should be like this:
 
     ![](images/readme/keyboard_control.png)
-
---------------------------------------------------------------------------------
 
 ## Mode
 
@@ -59,13 +54,15 @@ Run Crossing Waves Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy
 
   ![](images/readme/crossing_waves.png)
 
-2. Enter command (Example: run each mode for 15 times)
+2. Enter command (Example: run each difficulties for 15 times)
 
   ```
-  $ py .\crossing_wave.py 15 15 15 15
+  $ py .\crossing_waves.py 15 15 15 15
   ```
 
-⚠️ **WARNING**: Make sure that you have enough `Special Pass` for extra round. The bot will use up all the passes automatically based on how many running times you set. ⚠️
+⚠️ **WARNING** ⚠️ : Make sure that you have enough `Special Pass` tokens for extra rounds. The bot will use up all the tokens based on how many running times you type for each difficulties.
+
+--------------------------------------------------------------------------------
 
 ### Rescue Mode
 
@@ -79,7 +76,7 @@ Run Crossing Waves Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy
   $ py .\rescue_mode.py
   ```
 
-⚠️ **WARNING**: Make sure that you scanned rescue signals. The bot will go through all the rescue signals in the signal list only. ⚠️
+⚠️ **WARNING** ⚠️ :Make sure that you scanned rescue signals. The bot will go through all the rescue signals in the signal list only.
 
 ## To-Do
 
