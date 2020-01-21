@@ -46,7 +46,7 @@ Python bot for lazy people to play [AzurLane](https://azurlane.yo-star.com/)
 
 Start bot by typing following commands in this current directory
 
-### Crossing Waves `new`
+### Crossing Waves
 
 Run Crossing Waves Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy n times`
 
@@ -60,11 +60,29 @@ Run Crossing Waves Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy
   $ py .\crossing_waves.py 15 15 15 15
   ```
 
-⚠️ **WARNING** ⚠️ : Make sure that you have enough `Special Pass` tokens for extra rounds. The bot will use up all the tokens based on how many running times you type for each difficulties.
+⚠️ **WARNING** ⚠️ Make sure that you have enough `Special Pass` tokens for extra rounds. The bot will use up all the tokens based on how many running times you type for each difficulties.
 
 --------------------------------------------------------------------------------
 
-### Rescue Mode
+### HMS 2nd `new`
+
+Run Crossing Waves Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy n times`
+
+1. Go to event screen:
+
+  ![](images/readme/hms_2.png)
+
+2. Enter command (Example: run each difficulties for 15 times)
+
+  ```
+  $ py .\hms_2.py 15 15 15 15
+  ```
+
+⚠️ **WARNING** ⚠️ Make sure that you have enough `Special Pass` tokens for extra rounds. The bot will stop working since it would not handle the token popup.
+
+--------------------------------------------------------------------------------
+
+## Rescue Mode
 
 1. Go to weigh anchor screen:
 
@@ -76,7 +94,7 @@ Run Crossing Waves Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy
   $ py .\rescue_mode.py
   ```
 
-⚠️ **WARNING** ⚠️ :Make sure that you scanned rescue signals. The bot will go through all the rescue signals in the signal list only.
+⚠️ **WARNING** ⚠️ Make sure that you scanned rescue signals. The bot will go through all the rescue signals in the signal list only.
 
 ## To-Do
 
