@@ -50,7 +50,7 @@ def pressKey(key, count=1):
 
 
 def checkGameState():
-    location = localeImage('.\\images\\crossing_waves\\suruga', confidence=0.7)
+    location = localeImage('.\\images\\hms_2\\dido', confidence=0.7)
     if location is not None:
         return GameState.PreCombat
 
@@ -98,22 +98,22 @@ def handlePreCombatState():
     if current_ex_count < maximum_ex_count:
         print('handle ex chapter:')
         current_ex_count = current_ex_count + 1
-        clickImage('.\\images\\crossing_waves\\ex', confidence=0.7)
+        clickImage('.\\images\\hms_2\\ex', confidence=0.7)
 
     elif current_hard_count < maximum_hard_count:
         print('handle hard chapter:')
         current_hard_count = current_hard_count + 1
-        clickImage('.\\images\\crossing_waves\\hard', confidence=0.7)
+        clickImage('.\\images\\hms_2\\hard', confidence=0.7)
 
     elif current_normal_count < maximum_normal_count:
         print('handle normal chapter:')
         current_normal_count = current_normal_count + 1
-        clickImage('.\\images\\crossing_waves\\normal', confidence=0.7)
+        clickImage('.\\images\\hms_2\\normal', confidence=0.7)
 
     elif current_easy_count < maximum_easy_count:
         print('handle easy chapter:')
         current_easy_count = current_easy_count + 1
-        clickImage('.\\images\\crossing_waves\\easy', confidence=0.7)
+        clickImage('.\\images\\hms_2\\easy', confidence=0.7)
 
     print('click strike button...')
     clickImage('.\\images\\precombat\\strike', confidence=0.7)
@@ -138,13 +138,6 @@ def handleFormationState():
 
     print('click weigh anchor')
     clickImage('.\\images\\formation\\weigh_anchor', confidence=0.7)
-
-    print('click use crossing wave token if exists...')
-    location = localeImage(
-        '.\\images\\crossing_waves\\confirm_cw', confidence=0.9, grayscale=False)
-    if location is not None:
-        clickImageUntilSuccess(
-            '.\\images\\crossing_waves\\confirm_cw')
 
     return
 
