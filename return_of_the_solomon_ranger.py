@@ -53,11 +53,7 @@ def pressKey(key, count=1):
 
 def checkGameState():
     location = localeImage(
-        '.\\images\\precombat\\rescue_signal_1', confidence=0.7)
-    if location is not None:
-        return GameState.PreCombat
-    location = localeImage(
-        '.\\images\\precombat\\rescue_signal_2', confidence=0.7)
+        '.\\images\\return_of_the_solomon_ranger\\chapter_title', confidence=0.7)
     if location is not None:
         return GameState.PreCombat
 
@@ -94,19 +90,16 @@ def handleOtherState():
     return
 
 
-def handlePreCombatState(targetMainChapter, targetSubChapter):
+def handlePreCombatState():
     print('handle sub chapter:')
-    handleSubChapter(targetMainChapter, targetSubChapter)
+    handleSubChapter()
     return
 
 
-def handleSubChapter(targetMainChapter, targetSubChapter):
-    print('select target sub chapter...')
-    print('target sub chapter: ' + targetMainChapter + '_' + targetSubChapter)
-    subChapterImage = 'sub_chapter_' + targetMainChapter + '_' + targetSubChapter
-
-    print('click target sub chapter...')
-    clickImage('.\\images\\precombat\\' + subChapterImage, confidence=0.9)
+def handleSubChapter():
+    print('click sub chapter...')
+    clickImage(
+        '.\\images\\return_of_the_solomon_ranger\\sp_3', confidence=0.7)
 
     print('click strike button 1...')
     clickImage('.\\images\\precombat\\strike', confidence=0.7)
@@ -119,7 +112,17 @@ def handleSubChapter(targetMainChapter, targetSubChapter):
 def handleSubChapterState():
     print('wait animation...')
     time.sleep(3.0)
+    findShips()
+    if checkGameState() != GameState.SubChapter:
+        return
 
+    print('Reset panel postion...')
+    pressKey('W', 1)
+    pressKey('A', 2)
+    return
+
+
+def findShips():
     findShipBoss()
     findShipBattleship()
 
@@ -246,10 +249,7 @@ def handleInCompleteState():
 
 def main():
     scriptName = sys.argv[0]
-    targetMainChapter = sys.argv[1]
-    targetSubChapter = sys.argv[2]
     print('Start runnng: ' + scriptName)
-    print('Target: ' + '-' + targetMainChapter + '-' + targetSubChapter)
     print('Press Ctrl-C to quit.')
 
     while True:
@@ -263,7 +263,7 @@ def main():
             handleOtherState()
 
         elif currentGameState == GameState.PreCombat:
-            handlePreCombatState(targetMainChapter, targetSubChapter)
+            handlePreCombatState()
 
         elif currentGameState == GameState.SubChapter:
             handleSubChapterState()
@@ -273,20 +273,6 @@ def main():
 
         elif currentGameState == GameState.Complete:
             handleInCompleteState()
-
-        # ==================================================================
-        # DEBUG
-        # print(checkCurrentMainChapter())
-        # location = localeImage('.\\images\\subchapter\\ship_carrier_4')
-        # if location is not None:
-        #     x, y = pyautogui.center(location)
-        #     print(location)
-
-        # location = pyautogui.locateOnScreen('.\\images\\ship_normal_destroyer', grayscale = True)
-        # if location is not None:
-        #     x, y = pyautogui.center(location)
-        #     pyautogui.click(x, y)
-        # ==================================================================
     return
 
 
