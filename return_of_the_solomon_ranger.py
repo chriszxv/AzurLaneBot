@@ -99,7 +99,7 @@ def handlePreCombatState():
 def handleSubChapter():
     print('click sub chapter...')
     clickImage(
-        '.\\images\\return_of_the_solomon_ranger\\sp_3', confidence=0.7)
+        '.\\images\\return_of_the_solomon_ranger\\sp_3', confidence=0.9)
 
     print('click strike button 1...')
     clickImage('.\\images\\precombat\\strike', confidence=0.7)
