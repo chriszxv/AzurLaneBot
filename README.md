@@ -44,7 +44,7 @@ Start bot by typing following commands in this current directory
 
 ### Crossing Waves
 
-Run Crossing Waves Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy n times`
+Run Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy n times`
 
 1. Go to event screen:
 
@@ -62,7 +62,7 @@ Run Crossing Waves Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy
 
 ### HMS 2nd
 
-Run Crossing Waves Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy n times`
+Run Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy n times`
 
 1. Go to event screen:
 
@@ -72,6 +72,24 @@ Run Crossing Waves Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy
 
   ```shell
   $ py .\hms_2.py 15 15 15 15
+  ```
+
+⚠️ **WARNING** ⚠️ Make sure that you have enough `Special Pass` tokens for extra rounds. The bot will stop working since it would not handle the token popup.
+
+---
+
+### Air Raid Drills with Essex
+
+Run Bot for `Ex n times`, `Hard n times`, `Normal n times`, `Easy n times`
+
+1. Go to event screen:
+
+![](images/readme/air_raid_drills_with_essex.png)
+
+2. Enter command (Example: run each difficulties for 15 times)
+
+  ```shell
+  $ py .\air_raid_drills_with_essex_mode.py 15 15 15 15
   ```
 
 ⚠️ **WARNING** ⚠️ Make sure that you have enough `Special Pass` tokens for extra rounds. The bot will stop working since it would not handle the token popup.

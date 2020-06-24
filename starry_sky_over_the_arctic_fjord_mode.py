@@ -40,7 +40,7 @@ def clickImageUntilSuccess(targetImage, confidence=0.7):
 
 def checkGameState():
     location = localeImage(
-        '.\\images\\starry_sky_over_the_arctic_fjord_mode\\option', confidence=0.9)
+        '.\\images\\starry_sky_over_the_arctic_fjord\\option', confidence=0.9)
     if location is not None:
         return GameState.PreCombat
 
@@ -77,7 +77,7 @@ def handlePreCombatState():
 def handleSubChapter():
     print('click sp 3...')
     clickImageUntilSuccess(
-        '.\\images\\starry_sky_over_the_arctic_fjord_mode\\sp_3', confidence=0.9)
+        '.\\images\\starry_sky_over_the_arctic_fjord\\sp_3', confidence=0.9)
 
     print('click strike button 1...')
     clickImageUntilSuccess('.\\images\\precombat\\strike', confidence=0.7)
@@ -251,7 +251,8 @@ def main():
     while True:
         print('...')
         currentGameState = checkGameState()
-        print('============================================================================')
+        print(
+            '============================================================================')
         print('Current Game State: ' + currentGameState.name)
 
         if currentGameState == GameState.Other:
