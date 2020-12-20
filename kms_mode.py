@@ -242,7 +242,7 @@ def handleCombatState():
 
 def main():
     scriptName = sys.argv[0]
-    print('Start runnng: ' + scriptName)
+    print('Start running: ' + scriptName)
     print('Press Ctrl-C to quit.')
 
     while True:

@@ -248,7 +248,7 @@ def main():
     scriptName = sys.argv[0]
     targetMainChapter = sys.argv[1]
     targetSubChapter = sys.argv[2]
-    print('Start runnng: ' + scriptName)
+    print('Start running: ' + scriptName)
     print('Target: ' + '-' + targetMainChapter + '-' + targetSubChapter)
     print('Press Ctrl-C to quit.')
 

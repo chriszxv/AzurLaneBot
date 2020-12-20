@@ -182,7 +182,7 @@ def main():
     maximum_normal_count = int(sys.argv[3])
     maximum_easy_count = int(sys.argv[4])
 
-    print('Start runnng: ' + scriptName)
+    print('Start running: ' + scriptName)
     print('Run EX: ' + str(maximum_ex_count) + ' time(s)')
     print('Run Hard: ' + str(maximum_hard_count) + ' time(s)')
     print('Run Normal: ' + str(maximum_normal_count) + ' time(s)')
