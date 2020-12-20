@@ -95,7 +95,7 @@ def handleSubChapter():
         '.\\images\\iris_of_light_and_dark\\d_2', confidence=0.7)
 
     print('click strike button 1...')
-    clickImage('.\\images\\precombat\\strike', confidence=0.7)
+    clickImage('.\\images\\precombat\\strike_large', confidence=0.7)
 
     print('click strike button 2...')
     clickImage('.\\images\\precombat\\strike', confidence=0.7)
