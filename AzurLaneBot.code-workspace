@@ -1,8 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "C:\\Users\\Chris So\\Documents\\Git\\AzurLaneBot"
+    "folders": [
+        {
+            "path": "."
+        }
+    ],
+		"settings": {
+			"cSpell.words": [
+				"eugen",
+				"shokaku",
+				"suruga"
+			]
 		}
-	],
-	"settings": {}
 }
